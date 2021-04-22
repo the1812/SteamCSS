@@ -9,7 +9,7 @@ There are 3 files:
 - `SteamPath.txt`: Specify Steam install path
 - `Style.css`: Your custom CSS code to insert
 
-Write your Steam install path in `SteamPath.txt` and custom CSS code in `Style.css`.
+Write your Steam installation path in `SteamPath.txt` and custom CSS code in `Style.css`.
 
 Start `SteamCSS.exe`, it will insert CSS code into Steam files and exit silently.
 
