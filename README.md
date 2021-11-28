@@ -1,17 +1,20 @@
 # SteamCSS
 Insert custom CSS to Steam Library and Browser.
 
+[中文](README.zh-CN.md)
+
 ## Usage
 Download `SteamCSS.zip` at [Releases](https://github.com/the1812/SteamCSS/releases) page.
 
-There are 3 files:
+There are 4 files:
 - `SteamCSS.exe`: Main program
 - `SteamPath.txt`: Specify Steam install path
+- `StylePath.txt`: Specify Steam style files path
 - `Style.css`: Your custom CSS code to insert
 
 Write your Steam installation path in `SteamPath.txt` and custom CSS code in `Style.css`.
 
-Start `SteamCSS.exe`, it will insert CSS code into Steam files and exit silently.
+Start `SteamCSS.exe` to run the program.
 
 ## Notes
 - The default `font-family` is from [Sarasa-Gothic](https://github.com/be5invis/Sarasa-Gothic).

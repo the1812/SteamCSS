@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,28 @@ using System.Windows.Forms;
 
 namespace SteamCSS
 {
+  enum TextKeys
+  {
+    NoFiles,
+    Processed,
+  }
   class Program
   {
+    static readonly Dictionary<string, Dictionary<TextKeys, string>> Texts = new Dictionary<string, Dictionary<TextKeys, string>>
+    {
+      {"zh-CN", new Dictionary<TextKeys, string>
+        {
+          { TextKeys.NoFiles, "没有要处理的文件 (已跳过或未找到)" },
+          { TextKeys.Processed, "已处理:" },
+        }
+      },
+      {"en-US", new Dictionary<TextKeys, string>
+        {
+          { TextKeys.NoFiles, "No files to process. (Skipped or not found)" },
+          { TextKeys.Processed, "Processed:" },
+        }
+      },
+    };
     [STAThread]
     static void Main()
     {
@@ -34,7 +55,8 @@ namespace SteamCSS
           }
         });
         var message = string.Join(Environment.NewLine, processedFiles);
-        MessageBox.Show(string.IsNullOrWhiteSpace(message) ? "没有要处理的文件" : $"已处理:{Environment.NewLine}{message}", "SteamCSS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        var texts = Texts.TryGetValue(CultureInfo.CurrentUICulture.Name, out var match) ? match : Texts["zh-CN"];
+        MessageBox.Show(string.IsNullOrWhiteSpace(message) ? texts[TextKeys.NoFiles] : $"{texts[TextKeys.Processed]}{Environment.NewLine}{message}", "SteamCSS", MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       catch (FileNotFoundException ex)
       {
