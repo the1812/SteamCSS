@@ -13,6 +13,7 @@ There are 4 files:
 - `Style.css`: Your custom CSS code to insert
 
 Write your Steam installation path in `SteamPath.txt` and custom CSS code in `Style.css`.
+Optionally, you can create an extra `BrowserStyle.css` file. This style will be inserted to Steam Browser styles in replace of `Style.css`.
 
 Start `SteamCSS.exe` to run the program.
 

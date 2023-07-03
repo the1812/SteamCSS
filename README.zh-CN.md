@@ -13,6 +13,7 @@
 - `Style.css`: 自定义要插入的 CSS 代码
 
 先在 `SteamPath.txt` 里写下 Steam 的安装文件夹,  `Style.css` 里写下要插入的 CSS 代码.
+另外也可以再新建一个 `BrowserStyle.css` 文件, 这个样式可以替代 `Style.css` 插入到 Steam 内置浏览器的样式中.
 
 然后启动 `SteamCSS.exe` 就可以了.
 

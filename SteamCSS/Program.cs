@@ -37,7 +37,18 @@ namespace SteamCSS
       try
       {
         var steamPath = File.ReadAllText("SteamPath.txt").Trim();
-        var style = File.ReadAllText("Style.css");
+        var mainStyle = File.ReadAllText("Style.css");
+
+        var browserStyle = "";
+        if (File.Exists("BrowserStyle.css"))
+        {
+          browserStyle = File.ReadAllText("BrowserStyle.css");
+        }
+        else
+        {
+          browserStyle = mainStyle;
+        }
+
         var cssFiles = File.ReadAllText("StylePath.txt").Trim().Split(new string [] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         var processedFiles = new List<string>();
         cssFiles.ForEach(file =>
@@ -48,6 +59,7 @@ namespace SteamCSS
             return;
           }
           var content = File.ReadAllText(filePath);
+          var style = file.Contains("webkit") ? browserStyle : mainStyle;
           if (!content.StartsWith(style))
           {
             File.WriteAllText(filePath, style + Environment.NewLine + content);
